@@ -45,7 +45,7 @@ workflows:
 
             latest_commit_PR=$GIT_CLONE_COMMIT_HASH
             echo "PR commit"
-            echo "$latest_commint_PR"
+            echo "$latest_commit_PR"
 
             echo "main commit"
             latest_commint_main=`git log -n 1 main --pretty=format:"%H"`
@@ -53,11 +53,21 @@ workflows:
             echo "origin/main commit"
             latest_commint_main_2=`git log -n 1 origin/main --pretty=format:"%H"`
             echo "$latest_commint_main_2"
+
+            latest_commit_main_hardcode="977c8d6733992ee18a48c7f1b8167b784f5e3342"
             
 
-            echo `git diff --name-only $latest_commit_PR $latest_commint_main`
+            echo `git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`
 
-            Should_Run=no
+            files_changed=$(`git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`)
+            echo "$files_changed"
+
+            if [[ $files_changed == "bitrise.yml" ]] 
+            then
+                Should_Run=no
+            else
+                Should_Run=yes
+            fi
 
             envman add --key DEC_MAK --value "$Should_Run"
             echo "custom"
