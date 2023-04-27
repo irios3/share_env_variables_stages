@@ -60,9 +60,11 @@ workflows:
             echo `git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`
 
             files_changed=$(`git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`)
+            echo "files changed list"
             echo "$files_changed"
+            tmp_vrble="bitrise.yml"
 
-            if [[ $files_changed == "bitrise.yml" ]] 
+            if [[ $files_changed == $tmp_vrble ]] 
             then
                 Should_Run=no
             else
