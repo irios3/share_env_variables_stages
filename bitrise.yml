@@ -44,11 +44,14 @@ workflows:
             Should_Run=true
 
             latest_commit_PR=$GIT_CLONE_COMMIT_HASH
+            echo "PR commit"
             echo "$latest_commint_PR"
 
-            latest_commint_main=`git log -n 1 origin/main --pretty=format:"%H"`
+            echo "main commit"
+            latest_commint_main=`git log -n 1 main --pretty=format:"%H"`
             echo "$latest_commint_main"
-            latest_commint_main-2=`git log -n 1 origin/main --pretty=format:"%H"`
+            echo "origin/main commit"
+            latest_commint_main_2=`git log -n 1 origin/main --pretty=format:"%H"`
             echo "$latest_commint_main_2"
             
 
