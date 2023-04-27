@@ -62,7 +62,7 @@ workflows:
             files_changed=`git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`
             echo "files changed list"
             echo "$files_changed"
-            tmp_vrble="bitrise.yml"
+            tmp_vrble="otherfile"
 
             if [[ $files_changed == $tmp_vrble ]] 
             then
