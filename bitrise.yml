@@ -54,7 +54,7 @@ workflows:
             latest_commint_main_2=`git log -n 1 origin/main --pretty=format:"%H"`
             echo "$latest_commint_main_2"
 
-            latest_commit_main_hardcode="977c8d6733992ee18a48c7f1b8167b784f5e3342"
+            latest_commit_main_hardcode="5605db64b9b219cf894d7ec7c007d0cc9a95bde0"
             
 
             echo `git diff --name-only $latest_commit_PR $latest_commit_main_hardcode`
