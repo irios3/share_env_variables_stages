@@ -22,7 +22,7 @@ workflows:
     description: |
       Wworkflow to test using env vbles across stages
     steps:
-    - activate-ssh-key@4: {}
+    #- activate-ssh-key@4: {}
     - git-clone@7: {}
     - cache-pull@2: {}
     - swiftlint-extended@1:
