@@ -28,14 +28,6 @@ workflows:
     - swiftlint-extended@1:
         inputs:
         - linting_path: $BITRISE_SOURCE_DIR
-    #- script@1.1:
-    #    title: add variable
-    #    inputs:
-    #    - content: |
-    #        #!/bin/bash -e
-    #        set -e
-    #        Should_Run=true
-    #        envman add --key DEC_MAK --value "$Should_Run"
     - script@1.1:
         title: DecisionMaking
         inputs:
@@ -105,9 +97,11 @@ workflows:
         -conten: |
             echo "Hello"
 trigger_map:
-- push_branch: '*'
+- push_branch: release/v111
   workflow: DecisionMaking
-- pull_request_source_branch: '*'
+- push_branch: main
+  workflow: DecisionMaking
+- pull_request_target_branch: release/v111
   workflow: DecisionMaking
 meta:
   bitrise.io:
