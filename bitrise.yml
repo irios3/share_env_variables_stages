@@ -107,7 +107,9 @@ workflows:
 trigger_map:
 - push_branch: release/v111
   workflow: DecisionMaking
-- pull_request_source_branch: release/v111
+- push_branch: main
+  workflow: DecisionMaking
+- pull_request_target_branch: release/v111
   workflow: DecisionMaking
 meta:
   bitrise.io:
