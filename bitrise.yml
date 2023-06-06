@@ -104,7 +104,7 @@ workflows:
         -conten: |
             echo "Hello"
 trigger_map:
-- push_branch: *
+- push_branch: '*'
   workflow: DecisionMaking
 - pull_request_source_branch: main
   pipeline: test_pipeline
