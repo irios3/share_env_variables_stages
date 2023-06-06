@@ -45,6 +45,8 @@ workflows:
             # Manual triggers leave empty commits. 
             # Check for empty commit/PR and exit blacklist check if found to avoid erroring out.
             echo "files changed"
+            FILES_CHANGED_2=$(git diff --name-only origin/release/v110..."$BITRISE_GIT_COMMIT")
+            echo "$FILES_CHANGED_2"
             FILES_CHANGED=$(git diff --name-only origin/main..."$BITRISE_GIT_COMMIT")
             echo "Files changed in commit/PR: $FILES_CHANGED"
             if [[ -z "$FILES_CHANGED" ]]; then
