@@ -105,9 +105,9 @@ workflows:
         -conten: |
             echo "Hello"
 trigger_map:
-- push_branch: '*'
+- push_branch: release/v111
   workflow: DecisionMaking
-- pull_request_source_branch: '*'
+- pull_request_source_branch: release/v111
   workflow: DecisionMaking
 meta:
   bitrise.io:
