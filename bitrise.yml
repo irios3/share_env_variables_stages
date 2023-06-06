@@ -37,6 +37,22 @@ workflows:
     #        Should_Run=true
     #        envman add --key DEC_MAK --value "$Should_Run"
     - script@1.1:
+        title: DecisionMaking
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+            # Manual triggers leave empty commits. 
+            # Check for empty commit/PR and exit blacklist check if found to avoid erroring out.
+            echo "files changed"
+            FILES_CHANGED=$(git diff --name-only origin/main..."$BITRISE_GIT_COMMIT")
+            echo "Files changed in commit/PR: $FILES_CHANGED"
+            if [[ -z "$FILES_CHANGED" ]]; then
+                echo "No files changed in commit/PR. Skipping Blacklist check..."
+                envman add --key RUN_UI_TESTS --value Run_UI_Tests
+                exit 0
+            fi
+    - script@1.1:
         title: print variables
         inputs:
         - content: |
