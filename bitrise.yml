@@ -64,7 +64,7 @@ workflows:
     - script@1.1:
         title: print variables
         is_always_run: true
-        run_if: '{{getenv "Run_UI_Tests" | eq "hello" | and .IsBuildFailed}}'
+        run_if: '{{getenv "RUN_UI_TESTS" | eq "hello" | and .IsBuildFailed}}'
         inputs:
         - content: |
             #!/bin/bash -e
